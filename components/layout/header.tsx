@@ -45,17 +45,19 @@ export function Header({
 
   return (
     <header className="sticky top-0 z-30 flex h-16 items-center gap-4 border-b bg-background px-4 md:px-6 shadow-sm">
-      {/* Sidebar Toggle */}
-      <Button
-        type="button"
-        variant="ghost"
-        size="icon"
-        className="shrink-0"
-        onClick={onToggleSidebar}
-      >
-        <Menu className="h-5 w-5" />
-        <span className="sr-only">Toggle sidebar</span>
-      </Button>
+      {/* Sidebar Toggle (hanya tampil di mobile) */}
+      {onToggleSidebar && (
+        <Button
+          type="button"
+          variant="ghost"
+          size="icon"
+          className="shrink-0 md:hidden"
+          onClick={onToggleSidebar}
+        >
+          <Menu className="h-5 w-5" />
+          <span className="sr-only">Toggle sidebar</span>
+        </Button>
+      )}
 
       {/* Breadcrumbs */}
       <nav className="flex items-center gap-2 text-sm text-muted-foreground">
