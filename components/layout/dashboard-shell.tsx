@@ -24,16 +24,17 @@ export function DashboardShell({ children, userProfile }: DashboardShellProps) {
     <div className="relative flex min-h-screen">
       {isSidebarOpen && (
         <div
-          className="fixed inset-0 z-30 bg-black/40"
+          className="fixed inset-0 z-30 bg-black/40 md:hidden"
           onClick={() => setIsSidebarOpen(false)}
         />
       )}
 
       <Sidebar
         className={cn(
-          "-translate-x-full",
+          "-translate-x-full md:translate-x-0",
           isSidebarOpen && "translate-x-0",
         )}
+        onNavigate={() => setIsSidebarOpen(false)}
       />
 
       <div className="flex min-h-screen flex-1 flex-col">
@@ -41,7 +42,7 @@ export function DashboardShell({ children, userProfile }: DashboardShellProps) {
           userProfile={userProfile}
           onToggleSidebar={handleToggleSidebar}
         />
-        <main className="p-6">{children}</main>
+        <main className="p-4 md:p-6">{children}</main>
       </div>
     </div>
   );

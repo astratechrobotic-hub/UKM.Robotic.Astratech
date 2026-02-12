@@ -11,6 +11,7 @@ import { useTranslations } from "@/components/language/i18n";
 
 interface SidebarProps {
   className?: string;
+  onNavigate?: () => void;
 }
 
 interface NavigationItem {
@@ -79,7 +80,7 @@ const navigation: NavigationItem[] = [
   },
 ];
 
-export function Sidebar({ className }: SidebarProps) {
+export function Sidebar({ className, onNavigate }: SidebarProps) {
   const pathname = usePathname();
   const t = useTranslations();
   const [isAdmin, setIsAdmin] = useState<boolean>(false);
@@ -115,8 +116,8 @@ export function Sidebar({ className }: SidebarProps) {
   return (
     <div
       className={cn(
-        "fixed left-0 top-0 z-40 h-screen w-64 bg-primary-900 border-r border-primary-800 transform transition-transform duration-200 ease-in-out",
-        className
+        "fixed left-0 top-0 z-40 h-screen w-64 bg-primary-900 border-r border-primary-800 transform transition-transform duration-200 ease-in-out md:static md:h-auto md:translate-x-0",
+        className,
       )}
     >
       <div className="flex h-full flex-col">
@@ -148,6 +149,7 @@ export function Sidebar({ className }: SidebarProps) {
               <Link
                 key={item.name}
                 href={item.href}
+                onClick={onNavigate}
                 className={cn(
                   "group flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors",
                   isActive
