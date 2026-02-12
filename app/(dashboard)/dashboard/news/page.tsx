@@ -19,10 +19,12 @@ export default async function NewsPage() {
     .maybeSingle();
   const isAdmin = profile?.role === "admin";
 
-  const { data: newsList = [] } = await supabase
+  const { data: newsData } = await supabase
     .from("news")
     .select("*")
     .order("created_at", { ascending: false });
+
+  const newsList = newsData ?? [];
 
   return (
     <div className="space-y-6">
@@ -44,7 +46,7 @@ export default async function NewsPage() {
         </form>
       )}
 
-      <NewsList newsList={newsList as News[]} />
+      <NewsList newsList={newsList} />
 
       {newsList.length === 0 && (
         <div className="rounded-lg border bg-card">
