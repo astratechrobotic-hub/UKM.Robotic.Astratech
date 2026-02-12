@@ -22,7 +22,7 @@ export default async function NewsPage() {
   const { data: newsList = [] } = await supabase
     .from("news")
     .select("*")
-    .order("created_at", { descending: true });
+    .order("created_at", { ascending: false });
 
   return (
     <div className="space-y-6">
