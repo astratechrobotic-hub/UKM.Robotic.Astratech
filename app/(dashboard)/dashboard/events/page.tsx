@@ -23,11 +23,12 @@ export default async function EventsPage() {
     .maybeSingle();
   const isAdmin = profile?.role === "admin";
 
-  const { data: events = [] } = await supabase
+  const { data: eventsData } = await supabase
     .from("events")
     .select("*")
     .order("event_date", { ascending: true });
 
+  const events = eventsData ?? [];
   const upcomingEvents = events.filter((event) => isUpcoming(event.event_date));
   const pastEvents = events.filter((event) => !isUpcoming(event.event_date));
 
