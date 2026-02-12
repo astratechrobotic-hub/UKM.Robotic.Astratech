@@ -45,13 +45,13 @@ export function Header({
 
   return (
     <header className="sticky top-0 z-30 flex h-16 items-center gap-4 border-b bg-background px-4 md:px-6 shadow-sm">
-      {/* Sidebar Toggle (hanya tampil di mobile) */}
+      {/* Sidebar Toggle (semua device) */}
       {onToggleSidebar && (
         <Button
           type="button"
           variant="ghost"
           size="icon"
-          className="shrink-0 md:hidden"
+          className="shrink-0"
           onClick={onToggleSidebar}
         >
           <Menu className="h-5 w-5" />

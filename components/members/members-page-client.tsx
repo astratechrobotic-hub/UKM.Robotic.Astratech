@@ -44,54 +44,84 @@ export function MembersPageClient({
           <CardTitle>{t("members.card.title")}</CardTitle>
         </CardHeader>
         <CardContent>
-          <div className="overflow-x-auto">
-            <table className="w-full">
-              <thead>
-                <tr className="border-b">
-                  <th className="px-4 py-3 text-left text-sm font-semibold">
-                    {t("members.table.header.name")}
-                  </th>
-                  <th className="px-4 py-3 text-left text-sm font-semibold">
-                    {t("members.table.header.nim")}
-                  </th>
-                  <th className="px-4 py-3 text-left text-sm font-semibold">
-                    {t("members.table.header.division")}
-                  </th>
-                  <th className="px-4 py-3 text-left text-sm font-semibold">
-                    {t("members.table.header.role")}
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {members.map((member) => (
-                  <tr
-                    key={member.id}
-                    className="border-b hover:bg-muted/50"
-                  >
-                    <td className="px-4 py-3 text-sm">
-                      {member.full_name}
-                    </td>
-                    <td className="px-4 py-3 text-sm text-muted-foreground">
-                      {member.nim}
-                    </td>
-                    <td className="px-4 py-3">
-                      <Badge variant="outline">
-                        {getDivisionName(member.division_id, divisions)}
-                      </Badge>
-                    </td>
-                    <td className="px-4 py-3">
-                      <Badge
-                        variant={
-                          member.role === "admin" ? "default" : "secondary"
-                        }
-                      >
-                        {member.role}
-                      </Badge>
-                    </td>
+          {/* Tabel untuk layar sedang ke atas */}
+          <div className="hidden md:block">
+            <div className="overflow-x-auto">
+              <table className="w-full">
+                <thead>
+                  <tr className="border-b">
+                    <th className="px-4 py-3 text-left text-sm font-semibold">
+                      {t("members.table.header.name")}
+                    </th>
+                    <th className="px-4 py-3 text-left text-sm font-semibold">
+                      {t("members.table.header.nim")}
+                    </th>
+                    <th className="px-4 py-3 text-left text-sm font-semibold">
+                      {t("members.table.header.division")}
+                    </th>
+                    <th className="px-4 py-3 text-left text-sm font-semibold">
+                      {t("members.table.header.role")}
+                    </th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                  {members.map((member) => (
+                    <tr
+                      key={member.id}
+                      className="border-b hover:bg-muted/50"
+                    >
+                      <td className="px-4 py-3 text-sm">
+                        {member.full_name}
+                      </td>
+                      <td className="px-4 py-3 text-sm text-muted-foreground">
+                        {member.nim}
+                      </td>
+                      <td className="px-4 py-3">
+                        <Badge variant="outline">
+                          {getDivisionName(member.division_id, divisions)}
+                        </Badge>
+                      </td>
+                      <td className="px-4 py-3">
+                        <Badge
+                          variant={
+                            member.role === "admin" ? "default" : "secondary"
+                          }
+                        >
+                          {member.role}
+                        </Badge>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          {/* Kartu responsif untuk mobile */}
+          <div className="space-y-3 md:hidden">
+            {members.map((member) => (
+              <div
+                key={member.id}
+                className="rounded-md border p-3 text-sm"
+              >
+                <div className="font-semibold">{member.full_name}</div>
+                <div className="text-xs text-muted-foreground">
+                  NIM: {member.nim}
+                </div>
+                <div className="mt-2 flex flex-wrap items-center gap-2">
+                  <Badge variant="outline">
+                    {getDivisionName(member.division_id, divisions)}
+                  </Badge>
+                  <Badge
+                    variant={
+                      member.role === "admin" ? "default" : "secondary"
+                    }
+                  >
+                    {member.role}
+                  </Badge>
+                </div>
+              </div>
+            ))}
           </div>
         </CardContent>
       </Card>

@@ -116,7 +116,7 @@ export function Sidebar({ className, onNavigate }: SidebarProps) {
   return (
     <div
       className={cn(
-        "fixed left-0 top-0 z-40 h-screen w-64 bg-primary-900 border-r border-primary-800 transform transition-transform duration-200 ease-in-out md:static md:h-auto md:translate-x-0",
+        "fixed left-0 top-0 z-40 h-screen w-64 bg-primary-900 border-r border-primary-800 transform transition-transform duration-200 ease-in-out",
         className,
       )}
     >

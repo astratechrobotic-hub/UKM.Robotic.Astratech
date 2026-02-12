@@ -31,14 +31,14 @@ export function DashboardShell({ children, userProfile }: DashboardShellProps) {
     <div className="relative flex min-h-screen bg-background">
       {isSidebarOpen && (
         <div
-          className="fixed inset-0 z-30 bg-black/40 md:hidden"
+          className="fixed inset-0 z-30 bg-black/40"
           onClick={() => setIsSidebarOpen(false)}
         />
       )}
 
       <Sidebar
         className={cn(
-          "-translate-x-full md:translate-x-0",
+          "-translate-x-full",
           isSidebarOpen && "translate-x-0",
         )}
         onNavigate={() => setIsSidebarOpen(false)}

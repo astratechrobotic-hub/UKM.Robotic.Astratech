@@ -190,13 +190,15 @@ export default function JobDeskPage() {
 
       {isAdmin ? (
       <Tabs value={selectedDivision} onValueChange={setSelectedDivision}>
-        <TabsList>
-          {divisions.map((division) => (
-            <TabsTrigger key={division.id} value={division.id}>
-              {division.name}
-            </TabsTrigger>
-          ))}
-        </TabsList>
+        <div className="overflow-x-auto">
+          <TabsList className="w-max">
+            {divisions.map((division) => (
+              <TabsTrigger key={division.id} value={division.id}>
+                {division.name}
+              </TabsTrigger>
+            ))}
+          </TabsList>
+        </div>
 
         {divisions.map((division) => {
           const divisionJobDesks = getJobDesksByDivision(division.id);
