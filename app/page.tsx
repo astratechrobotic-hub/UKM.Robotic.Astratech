@@ -59,7 +59,7 @@ export default async function LandingPage() {
       {/* Hero Section */}
       <section className="relative flex min-h-[70vh] flex-col items-center justify-center px-4 text-center overflow-hidden">
         <Image
-          src="/ANGGOTA_ROBOTIC.jpeg"
+          src="/ANGGOTA_ROBOTIC1.jpeg"
           alt="Anggota Robotic Astratech"
           fill
           priority
