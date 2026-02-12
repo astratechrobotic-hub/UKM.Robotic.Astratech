@@ -65,8 +65,8 @@ export default async function LandingPage() {
           priority
           className="absolute inset-0 h-full w-full object-cover"
         />
-        {/* Overlay untuk tetap menjaga teks terbaca di atas foto */}
-        <div className="absolute inset-0 bg-primary-950/75" />
+        {/* Overlay netral agar foto tidak terlalu merah tetapi teks tetap terbaca */}
+        <div className="absolute inset-0 bg-black/40" />
 
         <div className="relative mb-8">
           <Image
