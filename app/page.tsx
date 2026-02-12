@@ -57,8 +57,18 @@ export default async function LandingPage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-primary-950 to-primary-900">
       {/* Hero Section */}
-      <section className="relative flex min-h-[70vh] flex-col items-center justify-center px-4 text-center">
-        <div className="mb-8">
+      <section className="relative flex min-h-[70vh] flex-col items-center justify-center px-4 text-center overflow-hidden">
+        <Image
+          src="/ANGGOTA_ROBOTIC.jpeg"
+          alt="Anggota Robotic Astratech"
+          fill
+          priority
+          className="absolute inset-0 h-full w-full object-cover"
+        />
+        {/* Overlay untuk tetap menjaga teks terbaca di atas foto */}
+        <div className="absolute inset-0 bg-primary-950/75" />
+
+        <div className="relative mb-8">
           <Image
             src="/LOGO_ROBOTIC.jpeg"
             alt="Robotic Astratech"
@@ -71,10 +81,10 @@ export default async function LandingPage() {
             ROBOTIC ASTRATECH
           </h1>
           <p className="mt-4 text-lg text-primary-200 md:text-xl">
-            Engineering Excellence Through Innovation
+              We Learn, We Build, We Conquer
           </p>
         </div>
-        <div className="flex flex-wrap justify-center gap-4">
+        <div className="relative flex flex-wrap justify-center gap-4">
           <Link href="/login">
             <Button
               size="lg"
